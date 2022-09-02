@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@SpringBootApplication(scanBasePackages = {"parks"})
+@SpringBootApplication
 public class ParksProjectApplication implements CommandLineRunner {
 
 	private final JdbcTemplate jdbcTemplate;
