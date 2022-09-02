@@ -7,10 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/parks")
-
 public class ParksController {
     @Autowired
-    private final ParksRepository parksRepository;
+    private ParksRepository parksRepository;
 
     @GetMapping("/hello")
     public String hello() {
