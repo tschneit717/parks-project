@@ -9,10 +9,14 @@ public class ParksRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public String getResult() {
-        String sql = "SELECT full_name FROM parks WHERE id = 1";
+    public String getResult(String id) {
+        StringBuilder query = new StringBuilder("SELECT full_name FROM parks WHERE");
+        if (id != null) {
+            query.append(" id = " + id);
+        }
 
-        String result = jdbcTemplate.queryForObject(sql, String.class);
+        // TODO: Return an actual object - Tom
+        String result = jdbcTemplate.queryForObject(query.toString(), String.class);
 
         return result;
     }
