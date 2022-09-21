@@ -17,18 +17,18 @@ public class ParksController {
     private ParksRepository parksRepository;
 
     @GetMapping("/hello")
-    public ResponseEntity<String> getParkByIdUsingQueryParam(@RequestParam String id) {
+    public ResponseEntity<ParkModel> getParkByIdUsingQueryParam(@RequestParam String id) {
         try {
-            return new ResponseEntity<>(parksRepository.getResult(id), HttpStatus.OK);
+            return new ResponseEntity<ParkModel>(parksRepository.getResult(id), HttpStatus.OK);
         } catch (BadSqlGrammarException error) {
             error.getStackTrace();
-            return new ResponseEntity<>(error.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+//            return new ResponseEntity<>(error.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         } catch (EmptyResultDataAccessException error) {
-            return new ResponseEntity<>(error.getMessage(), HttpStatus.NOT_FOUND);
+//            return new ResponseEntity<>(error.getMessage(), HttpStatus.NOT_FOUND);
         } catch (Exception error) {
             error.getStackTrace();
-            return new ResponseEntity<>("Something went wrong", HttpStatus.BAD_REQUEST);
+//            return new ResponseEntity<>("Something went wrong", HttpStatus.BAD_REQUEST);
         }
-
+        return new ResponseEntity<ParkModel>(new ParkModel(), HttpStatus.NOT_FOUND);
     }
 }
