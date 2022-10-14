@@ -1,5 +1,7 @@
 package com.schneit.parksproject.parks;
 
+import com.schneit.parksproject.addresses.AddressModel;
+import com.schneit.parksproject.addresses.AddressesMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -21,6 +23,13 @@ public class ParksRepository {
 
         ParkModel result = jdbcTemplate.queryForObject(query.toString(), new ParksMapper());
 
+        StringBuilder addressQuery = new StringBuilder("SELECT * FROM addresses WHERE park_id = ");
+        if (id != null) {
+            addressQuery.append(id + " AND address_type_id = 1");
+        }
+        AddressModel addressResult = jdbcTemplate.queryForObject(addressQuery.toString(), new AddressesMapper());
+
+        System.out.println(addressResult);
         // TODO: Join on the address here to the park model
         return result;
     }

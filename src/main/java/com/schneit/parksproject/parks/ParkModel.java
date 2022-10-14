@@ -1,5 +1,7 @@
 package com.schneit.parksproject.parks;
 
+import com.schneit.parksproject.addresses.AddressModel;
+
 public class ParkModel {
     private String parkName;
     private String parkDescription;
@@ -9,8 +11,26 @@ public class ParkModel {
     private String parkUrl;
     private String weatherInfo;
     private String fullName;
-    private Double latidute;
+    private Double latitude;
     private Double longitude;
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public AddressModel getAddress() {
+        return address;
+    }
+
+    public void setAddress(AddressModel address) {
+        this.address = address;
+    }
+
+    private AddressModel address;
 
     public String getParkName() {
         return parkName;
@@ -41,7 +61,7 @@ public class ParkModel {
     }
 
     public Double getLatidute() {
-        return latidute;
+        return latitude;
     }
 
     public Double getLongitude() {
@@ -79,7 +99,7 @@ public class ParkModel {
     }
 
     public void setLatidute(Double latidute) {
-        this.latidute = latidute;
+        this.latitude = latitude;
     }
 
     public void setLongitude(Double longitude) {
