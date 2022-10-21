@@ -7,7 +7,6 @@ public class AddressModel {
     private String city;
     private String state_code;
     private String postal_code;
-    private String park_id;
 
     public String getLine_1() {
         return line_1;
@@ -56,24 +55,5 @@ public class AddressModel {
     public void setPostal_code(String postal_code) {
         this.postal_code = postal_code;
     }
-
-    public String getPark_id() {
-        return park_id;
-    }
-
-    public void setPark_id(String park_id) {
-        this.park_id = park_id;
-    }
-
-    public String getAddress_type_id() {
-        return address_type_id;
-    }
-
-    public void setAddress_type_id(String address_type_id) {
-        this.address_type_id = address_type_id;
-    }
-
-    private String address_type_id;
-
 
 }

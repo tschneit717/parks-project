@@ -13,24 +13,7 @@ public class ParkModel {
     private String fullName;
     private Double latitude;
     private Double longitude;
-
-    public Double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(Double latitude) {
-        this.latitude = latitude;
-    }
-
-    public AddressModel getAddress() {
-        return address;
-    }
-
-    public void setAddress(AddressModel address) {
-        this.address = address;
-    }
-
-    private AddressModel address;
+    private AddressModel physicalAddress;
 
     public String getParkName() {
         return parkName;
@@ -58,10 +41,6 @@ public class ParkModel {
 
     public String getWeatherInfo() {
         return weatherInfo;
-    }
-
-    public Double getLatidute() {
-        return latitude;
     }
 
     public Double getLongitude() {
@@ -98,7 +77,11 @@ public class ParkModel {
         this.weatherInfo = weatherInfo;
     }
 
-    public void setLatidute(Double latidute) {
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
         this.latitude = latitude;
     }
 
@@ -107,4 +90,12 @@ public class ParkModel {
     }
 
     public void setFullName(String fullName) { this.fullName = fullName; }
+
+    public AddressModel getPhysicalAddress() {
+        return physicalAddress;
+    }
+
+    public void setPhysicalAddress(AddressModel physicalAddress) {
+        this.physicalAddress = physicalAddress;
+    }
 }

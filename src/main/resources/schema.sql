@@ -103,3 +103,9 @@ VALUES ('P.O. Box 168',
         2);
 
 DELETE FROM addresses WHERE id = 2;
+
+SELECT *
+FROM parks p
+INNER JOIN addresses
+ON p.id = addresses.park_id
+WHERE p.id = 1;

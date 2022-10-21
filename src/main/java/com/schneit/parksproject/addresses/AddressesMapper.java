@@ -17,7 +17,6 @@ public class AddressesMapper implements RowMapper<AddressModel> {
         address.setCity(rs.getString("city"));
         address.setState_code(rs.getString("state_code"));
         address.setPostal_code(rs.getString("postal_code"));
-        address.setPark_id(rs.getString("park_id"));
 
         return address;
     }
