@@ -1,5 +1,7 @@
 package com.schneit.parksproject.parks;
 
+import com.schneit.parksproject.exception.DataNotFoundException;
+import com.schneit.parksproject.exception.GenericException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
@@ -17,18 +19,21 @@ public class ParksController {
     private ParksRepository parksRepository;
 
     @GetMapping("/hello")
-    public ResponseEntity<ParkModel> getParkByIdUsingQueryParam(@RequestParam String id) {
+    public ResponseEntity<ParkModel> getParkByIdUsingQueryParam(@RequestParam String id) throws GenericException, DataNotFoundException, IllegalArgumentException {
+        if (id == null || id.isBlank()) {
+            throw new IllegalArgumentException("Park id is required.");
+        }
         try {
-            return new ResponseEntity<ParkModel>(parksRepository.getResult(id), HttpStatus.OK);
-        } catch (BadSqlGrammarException error) {
-            error.getStackTrace();
-//            return new ResponseEntity<>(error.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(parksRepository.getResult(id), HttpStatus.OK);
         } catch (EmptyResultDataAccessException error) {
-//            return new ResponseEntity<>(error.getMessage(), HttpStatus.NOT_FOUND);
+            error.getStackTrace();
+            throw new DataNotFoundException("Un-processable request");
+        } catch (IllegalArgumentException ex) {
+            ex.getStackTrace();
+            throw ex;
         } catch (Exception error) {
             error.getStackTrace();
-//            return new ResponseEntity<>("Something went wrong", HttpStatus.BAD_REQUEST);
+            throw new GenericException("Something went wrong.");
         }
-        return new ResponseEntity<ParkModel>(new ParkModel(), HttpStatus.NOT_FOUND);
     }
 }
