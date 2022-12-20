@@ -1,3 +1,5 @@
+/usr/local/mysql/bin/mysql -u root -p
+
 CREATE TABLE address_types
 (
     id           INT NOT NULL UNIQUE PRIMARY KEY,
@@ -109,3 +111,18 @@ FROM parks p
 INNER JOIN addresses
 ON p.id = addresses.park_id
 WHERE p.id = 1;
+
+CREATE TABLE users (
+    id              INT NOT NULL UNIQUE PRIMARY KEY AUTO_INCREMENT,
+    name            CHAR(100),
+    password        VARCHAR(10000),
+    username        CHAR(100)
+);
+
+CREATE TABLE search_history (
+    id              INT NOT NULL UNIQUE PRIMARY KEY AUTO_INCREMENT,
+    start_address   VARCHAR(255),
+    end_address     VARCHAR(255),
+    user_id         INT,
+    FOREIGN KEY (user_id) REFERENCES users (id)
+);
