@@ -9,16 +9,16 @@ CREATE TABLE address_types
 CREATE TABLE parks
 (
     id               INT NOT NULL UNIQUE PRIMARY KEY AUTO_INCREMENT,
-    park_description VARCHAR(255),
+    park_description VARCHAR(4000),
     designation      VARCHAR(255),
-    directions_info  VARCHAR(255),
+    directions_info  VARCHAR(4000),
     directions_url   VARCHAR(255),
     full_name        VARCHAR(255),
     latitude         DOUBLE,
     longitude        DOUBLE,
     park_name        VARCHAR(255),
     park_url         VARCHAR(255),
-    weather_info     VARCHAR(255)
+    weather_info     VARCHAR(4000)
 );
 
 CREATE TABLE addresses
