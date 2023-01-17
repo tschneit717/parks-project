@@ -1,0 +1,22 @@
+Endpoint to search for parks by:
+
+/search?radius=50&startingLat=40&startingLon=40&keyword=kayaking&direction=west
+
+/query-by-radius lat, long, radius
+/query-by-travel-time - potentially not MVP worthy
+/query-by-direction type (west/east or north/south), current (lat/long)
+
+/query-by-state state abbreviates
+/query-by-name - name
+/query-by-keyword - search in description
+/query-by-activity - search in linked activities for park
+
+How do we determine radius? Driving distance vs time distance? Coordinates?
+for parks in multiple states, add the other states to the addresses
+edge case? Driving to hawaii?
+
+TODO: Add acitivities or features to park?
+TODO: Spring security
+TODO: Password hashing for users
+TODO: User fields
+TODO: Search endpoint
