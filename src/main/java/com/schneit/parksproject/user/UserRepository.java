@@ -16,12 +16,11 @@ public class UserRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public UserModel registerNewUser(@RequestBody RegisterRequestBody body) throws GenericException {
+    public UserModel registerNewUser(UserModel user) throws GenericException {
         StringBuilder query = new StringBuilder("INSERT INTO users (name, password, username) VALUES (?, ?, ?)");
         try {
-            jdbcTemplate.update(query.toString(), body.getUsername(), body.getPassword(), body.getUsername());
-            UserModel user = new UserModel();
-            user.setUserName(body.getUsername());
+            jdbcTemplate.update(query.toString(), user.getUserName(), user.getPassword(), user.getUserName());
+            user.setUserName(user.getUserName());
             return user;
         } catch (Exception error) {
             throw new GenericException("Oops something went wrong");
@@ -36,5 +35,15 @@ public class UserRepository {
             throw new Exception("Missing id");
         }
         return  jdbcTemplate.queryForObject(query.toString(), new UserMapper());
+    }
+
+    public UserModel getUserByUserName(@RequestBody String userName) throws Exception {
+        StringBuilder query = new StringBuilder("SELECT ONE FROM users WHERE userName = ");
+        if (userName != null) {
+            query.append(userName);
+        } else {
+            throw new Exception("Missing userName");
+        }
+        return jdbcTemplate.queryForObject(query.toString(), new UserMapper());
     }
 }

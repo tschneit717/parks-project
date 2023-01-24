@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/user")
 public class UserController {
     private  UserRepository userRepository;
+    private IUserRegistrationService userRegistrationService;
 
     // do database work inside repository class
     // Add validation
@@ -27,7 +28,8 @@ public class UserController {
             throw new GenericException("Body cannot be null");
         }
         try {
-            return new ResponseEntity<>(userRepository.registerNewUser(body), HttpStatus.OK);
+            // call user registration service
+            return new ResponseEntity<>(userRegistrationService.registerUser(body.getUsername(), body.getUsername(), body.getPassword()), HttpStatus.OK);
         } catch (EmptyResultDataAccessException error) {
             error.getStackTrace();
             throw new DataNotFoundException("Un-processable request");

@@ -53,6 +53,13 @@
 			<version>3.12.0</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>6.0.1</version>
+		</dependency>
+
 		<!--		&lt;!&ndash; https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc &ndash;&gt;-->
 <!--		<dependency>-->
 <!--			<groupId>com.microsoft.sqlserver</groupId>-->
