@@ -10,4 +10,6 @@ public class StringHashingService implements IStringHashingService{
         String hashedString = encoder.encode(string);
         return hashedString;
     }
+
+    // Add matching class
 }

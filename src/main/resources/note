@@ -25,3 +25,6 @@ TODO: Password hashing for users
 TODO: User fields
 TODO: Search endpoint
 
+1: Implement authentication provider
+2: Tell spring to use auth prov to auth users
+3: Configure filter chain so we can require authentication for certain requests
