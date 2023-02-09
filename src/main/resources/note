@@ -15,7 +15,6 @@ How do we determine radius? Driving distance vs time distance? Coordinates?
 for parks in multiple states, add the other states to the addresses
 edge case? Driving to hawaii?
 
-TODO: Add activities or features to park? //
 activities, tags, and keywords
 keywords search the description
 activities and tags are tables that we link to the park
