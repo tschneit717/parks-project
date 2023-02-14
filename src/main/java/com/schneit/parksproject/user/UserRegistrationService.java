@@ -2,7 +2,9 @@ package com.schneit.parksproject.user;
 
 import com.schneit.parksproject.exception.GenericException;
 import com.schneit.parksproject.utils.StringHashingService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserRegistrationService implements IUserRegistrationService {
 
     private UserRepository userRepository;
