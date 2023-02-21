@@ -29,11 +29,24 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/register").permitAll()
+        http.anonymous().and().authorizeRequests()
+                .antMatchers("/user/register**")
+                .permitAll()
+                .and()
+            .authorizeRequests()
                 .anyRequest()
                 .authenticated()
                 .and()
-                .httpBasic();
+            .httpBasic()
+                .and()
+            .csrf().disable();
+//        http.authorizeRequests().antMatchers("/**").permitAll();
+//        http.authorizeRequests()
+//                .antMatchers("/register").permitAll()
+//                .anyRequest()
+//                .authenticated()
+//                .and()
+//                .httpBasic();
         return http.build();
     }
 

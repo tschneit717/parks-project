@@ -28,7 +28,7 @@ public class UserRepository {
     }
 
     public UserModel getUserById(@RequestBody String id) throws Exception {
-        StringBuilder query = new StringBuilder("SELECT ONE FROM users WHERE id = ");
+        StringBuilder query = new StringBuilder("SELECT * FROM users WHERE id = ");
         if (id != null) {
             query.append(id);
         } else {
@@ -38,12 +38,10 @@ public class UserRepository {
     }
 
     public UserModel getUserByUserName(@RequestBody String userName) throws Exception {
-        StringBuilder query = new StringBuilder("SELECT ONE FROM users WHERE userName = ");
-        if (userName != null) {
-            query.append(userName);
-        } else {
+        StringBuilder query = new StringBuilder("SELECT * FROM users WHERE userName = (?)");
+        if (userName == null) {
             throw new Exception("Missing userName");
         }
-        return jdbcTemplate.queryForObject(query.toString(), new UserMapper());
+        return jdbcTemplate.queryForObject(query.toString(), new UserMapper(), userName);
     }
 }
